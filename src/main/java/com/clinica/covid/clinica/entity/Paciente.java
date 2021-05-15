@@ -1,10 +1,11 @@
 package com.clinica.covid.clinica.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -26,6 +27,6 @@ public class Paciente {
     private String email;
     @Column(name = "telefono",nullable = false,length = 9)
     private String telefono;
-    @Column(name = "fechadenacimiento",nullable = false,length = 100)
+    @JsonSerialize(using= ToStringSerializer.class)
     private Date fechadenacimiento;
 }
